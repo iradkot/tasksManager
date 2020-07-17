@@ -15,4 +15,9 @@ services:
     environment:
       POSTGRES_DB: "db"
       POSTGRES_HOST_AUTH_METHOD: "trust"
+  react_frontend:
+    container_name: "react_frontend"
+    build: ./react_frontend/
+    ports:
+      - "3000:3000"
 

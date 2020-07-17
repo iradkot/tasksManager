@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from "react";
+class App extends Component {
+  state = { data: [] };
+  
+  componentDidMount() {
+    this.getTestQuery();
+  };
+  
+  getTestQuery() {
+    fetch("http://localhost:3001/test_query")
+      .then(data => data.json())
+      .then(res => this.setState({ data: res }))
+  };
+  
+  render() {
+    const data = this.state.data.map((item) =>
+      <li key={item.id}>{item.firstname} {item.lastname}</li>
+    )
+    return (
+      <div>
+        <ol>{data}</ol>
+      </div>
+    );
+  }
 }
-
 export default App;
