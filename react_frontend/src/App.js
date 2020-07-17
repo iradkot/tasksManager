@@ -7,9 +7,10 @@ class App extends Component {
   };
   
   getTestQuery() {
-    fetch("http://localhost:3001/test_query")
+    fetch("http://18.221.245.33:3001/test_query")
       .then(data => data.json())
       .then(res => this.setState({ data: res }))
+      .catch(e => console.log({e}));
   };
   
   render() {
