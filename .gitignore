@@ -1,0 +1,3 @@
+
+# ignore database data folder
+pg/db_data
